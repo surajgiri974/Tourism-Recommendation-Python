@@ -1,0 +1,11 @@
+
+
+
+
+	 {% if messages %}
+              {%  for message in messages %}
+              <ul style="color:black;font-size:12px;margin-left:0%; width:40%;font-weight:bolder;"><li><div class="alert alert-{{ message.tags }} m-2" id="msg" role="alert" style="margin-left:0%;">
+                 {{ message }}
+              </div></li></ul>
+              {% endfor %}
+			{% endif %}

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	{% load static %}
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+
+	<title>Hotel</title>
+
+	
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900" rel="stylesheet">
+
+	
+	<link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap.min1.css' %}" />
+
+	
+	<link type="text/css" rel="stylesheet" href="{% static 'css/style1.css' %}" />
+
+	
+		
+
+</head>
+
+<body>
+	{% if 'username' in request.session %}
+	<div id="booking" class="section">
+		<div class="section-center">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-5">
+						<div class="booking-cta">
+							<h1>Make your reservation</h1>
+							<p></p>
+						</div>
+					</div>
+					<div class="col-md-6 col-md-offset-1">
+						<div class="booking-form">
+							<form action="{% url 'customer:hotel_book' %} " method="POST">
+								{% csrf_token %}
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<input class="form-control" type="text" name="custname">
+											<span class="form-label">Name</span>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<input class="form-control" type="email" name="cemail">
+											<span class="form-label">Email</span>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<input class="form-control" type="tel" maxlength="10" name="cnumber">
+											<span class="form-label">Phone</span>
+										</div>
+									</div>
+									<div class="col-md-3 col-sm-6">
+										<div class="form-group">
+											<span class="form-label">Rooms</span>
+											<select class="form-control" name="roombkd" id="room">
+												<option>1</option>
+												<option>2</option>
+												<option>3</option>
+											</select>
+											<span class="select-arrow"></span>
+										</div>
+									</div>
+									<div class="col-md-3 col-sm-6">
+										<div class="form-group">
+											<span class="form-label">Guests</span>
+											<select class="form-control" name="people" id="people" onchange="checkAvailable();">
+												<option>1</option>
+												<option>2</option>
+												<option>3</option>
+												<option>4</option>
+												<option>5</option>
+												<option>6</option>
+												<option>7</option>
+												<option>8</option>
+												<option>9</option>
+												<option>10</option>
+											</select>
+											<span class="select-arrow"></span>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<input class="form-control" type="date" name="checkindt" required>
+											<span class="form-label">Check In</span>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<input class="form-control" type="date" name="checkoutdt" required>
+											<span class="form-label">Check Out</span>
+										</div>
+									</div>
+								</div>
+								<div class="form-btn">
+									<button class="submit-btn">Book Now</button>
+								</div>
+								<p style="color:white;">{% include 'Tourism/message_show.html' %}</p>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="{% static 'js/jquery.min1.js' %}"></script>
+	<script>
+		$('.form-control').each(function () {
+			floatedLabel($(this));
+		});
+
+		$('.form-control').on('input', function () {
+			floatedLabel($(this));
+		});
+
+		function floatedLabel(input) {
+			var $field = input.closest('.form-group');
+			if (input.val()) {
+				$field.addClass('input-not-empty');
+			} else {
+				$field.removeClass('input-not-empty');
+			}
+		}
+
+		function checkAvailable()
+		{
+
+			var room=document.getElementById('room').value;
+			var people=document.getElementById('people').value;
+			if(room>1)
+			{
+			  if(people>3){
+			   alert("1 Room Can Only Have Maximum 3 Guests");
+			   return document.getElementById('room').value=1,document.getElementById('people').value=1;
+			  }
+			}
+
+
+
+
+
+
+		}
+	</script>
+{% else %}
+<h1>Please Login to Book</h1>
+<script>
+        window.setTimeout(window.location.href = "/",1000);
+</script>
+{% endif %}
+</body>
+
+</html>

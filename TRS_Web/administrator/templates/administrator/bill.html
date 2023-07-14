@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tour and Travel Bill</title>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Add your custom styles here */
+        /* ... */
+    </style>
+</head>
+<body>
+    <div class="bill-header">
+        <h1>Travel Invoice</h1>
+    </div>
+    <div class="bill-details"><br>
+        <p><strong>&nbsp;&nbsp;Invoice Number:</strong> {{ invoice_number }}</p>
+        <p><strong>&nbsp;&nbsp;Date:</strong> {{ invoice_date }}</p>
+        <p><strong>&nbsp;&nbsp;Customer Name:</strong> {{ customer_name }}</p>
+        <p><strong>&nbsp;&nbsp;Package:</strong> {{ package_name }}</p>
+        <p><strong>&nbsp;&nbsp;Trip Duration:</strong> {{ trip_duration }}</p>
+        <p><strong>&nbsp;&nbsp;Total Amount:</strong> {{ total_amount }}</p>
+    </div>
+    <table class="bill-table table">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ description }}</td>
+                <td>{{ total_amount }}</td>
+            </tr>
+            
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="1" class="bill-total"><b>Total</b></td><br />
+                <td class="bill-total"><b>{{ total_amount }}</b></td>
+            </tr>
+        </tfoot>
+    </table>
+    <footer>
+        <h2>Thank You !!!</h2>
+    </footer>
+    <!-- Add Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

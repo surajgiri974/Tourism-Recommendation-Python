@@ -1,0 +1,8 @@
+	 {% if messages %}
+              {%  for message in messages %}
+              <ul style="color:black;font-size:20px;"><li><div class="alert alert-{{ message.tags }} m-2" id="msg" role="alert" style="color:rgb(0,234,123);">
+                  <script> alert("{{ message }}");</script>{{ message }}
+
+              </div></li></ul>
+              {% endfor %}
+			{% endif %}

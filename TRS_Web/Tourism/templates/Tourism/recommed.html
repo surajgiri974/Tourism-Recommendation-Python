@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html ng-app="">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'recommend.css' %}" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
+    <title>Recommend Place</title>
+</head>
+<body>
+    <!---------------------   Contact Start ---------------------->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contactinfo">
+                <div>
+                    <h2>Contact Info</h2>
+                    <hr>
+                    <ul class="info">
+                        <li>
+                            <span><img src="{% static 'img/location.png' %}" alt="location image"></span>
+                            &nbsp;<input type="text" id="address" value="{{cname}}" style="border:1px solid white;width:75%;padding:10px;background-color:#0F3959;color:white;" >
+                        </li>
+                        <li>
+                            <span><img src="{% static 'img/mail.png' %}" alt="location image"></span>
+                            &nbsp;<textarea id="information" row="2" col="10" style="border:1px solid white;width:75%;padding:20px;background-color:#0F3959;color:white;" ></textarea>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <h3 style="color:white;"><a href="{% url 'customer:home_page' %}" style="color:blue;text-decoration:none;">Click </a> to get more info</h3>
+            </div>
+            <div class="contactForm">
+                <h2>Send a Message{{cname}}</h2>
+                <div class="formBox">
+                    <div class="inputBox w50">
+                        <input type="text" name="" ng-model="cname" required>
+                        <span>Name</span>
+                    </div>
+                    <div class="inputBox w50">
+                        <input type="text" name="" required>
+                        <span>Email Address</span>
+                    </div>
+                    <div class="inputBox w50">
+                        <input type="text" name="" required>
+                        <span>Mobile Number</span>
+                    </div>
+                    <div class="inputBox w50"><br>
+                        <select id="country" style="width:80%; color:black;border-radius: 20px; font-size: 14px; " onchange="change()"; readonly> 
+                            <option>India</option>
+                        </select><br>
+                        <span>Selected Country</span>
+                    </div>
+                    <div class="inputBox w50"><br>
+                        <select id="state" style="width:80%; color:black;border-radius: 20px; font-size: 14px; " onchange="change();">
+                        <option>Select State</option>
+                        <option>Maharashtra</option>
+                        <option>Karnataka</option>
+                        <option>Goa</option>
+                        <option>MP</option>
+                        <option>Kerala</option>
+                        
+                        </select><br>
+                        <span>Select State</span>
+                    </div>
+                    <div class="inputBox w50"><br>
+                        <select id="tour" style="width:80%; color:black;border-radius: 20px; font-size: 14px; " onchange="places();">
+                        <option>Select Place</option>
+                        <option>Hill Station</option>
+                        <option>Beach</option>
+                        <option>Heritage</option>
+                        <option>Temple</option>
+
+
+                        </select><br>
+                        <span>Select Place</span>
+                    </div>
+                    <div class="inputBox w100">
+                        <input type="submit" value="Send">
+                    </div>
+                </div>
+
+      </section>
+
+    <!---------------------   Contact End ---------------------->
+
+<script>
+
+function places()
+{
+  var a=document.getElementById("state").value;
+  if(a=="MP")
+  {
+     document.getElementById("address").value="India,MP"
+    if(document.getElementById("tour").value=="Beach")
+    {
+        document.getElementById("information").value="Place Are: No Beaches in MP";
+    }
+    if(document.getElementById("tour").value=="Hill Station")
+    {
+        document.getElementById("information").value="Place Are: Pachmarhi Hill,Mandu Hill,Shivpuri Hill,Omkareshwar Hill";
+    }
+    if(document.getElementById("tour").value=="Temple")
+    {
+        document.getElementById("information").value="Place Are: Mahakaleshwar Jyotirlinga,Saas Bahu Temple,Bada Ganesh Ka Mandir";
+    }
+    if(document.getElementById("tour").value=="Heritage")
+    {
+        document.getElementById("information").value="Place Are: The Great Stupa of Sanchi,The Khajuraho Group of Temples,Gwalior Fort";
+    }
+  }
+  else if(a=="Goa")
+  {
+    document.getElementById("address").value="India,Goa"
+    if(document.getElementById("tour").value=="Beach")
+    {
+        document.getElementById("information").value="Place Are: Colva Beach,Mamdrem Beach,Sinquerium Beach";
+    }
+    if(document.getElementById("tour").value=="Hill Station")
+    {
+        document.getElementById("information").value="Place Are: Chorla Ghats,Amboli,Agumbe";
+    }
+    if(document.getElementById("tour").value=="Temple")
+    {
+        document.getElementById("information").value="Place Are: Shanta Durga Temple, ";
+    }
+    if(document.getElementById("tour").value=="Heritage")
+    {
+        document.getElementById("information").value="Place Are: Basilica Of Bom Jesus,Aguada Fort,St. Augustine Tower - Church Of St. Augustine";
+    }
+  }
+  else if(a=="Kerala")
+  {
+    document.getElementById("address").value="India,Kerala"
+    if(document.getElementById("tour").value=="Beach")
+    {
+        document.getElementById("information").value="Place Are: Varkala BeachBekal ,BeachAlappuzha Beach";
+    }
+    if(document.getElementById("tour").value=="Hill Station")
+    {
+        document.getElementById("information").value="Place Are: Munnar,Wayanad,Vagamon";
+    }
+    if(document.getElementById("tour").value=="Temple")
+    {
+        document.getElementById("information").value="Place Are: Sree Padmanabhaswamy,Sabarimala Sastha ";
+    }
+    if(document.getElementById("tour").value=="Heritage")
+    {
+        document.getElementById("information").value="Place Are: Anchuthengu Fort,Thrikkakkudi Rock";
+    }
+  }
+  else if(a=="Maharashtra")
+  {
+    document.getElementById("address").value="India,Maharashtra"
+    if(document.getElementById("tour").value=="Beach")
+    {
+        document.getElementById("information").value="Place Are: Ganapatipule Beach,Juhu Beach";
+    }
+    if(document.getElementById("tour").value=="Hill Station")
+    {
+        document.getElementById("information").value="Place Are: Lonavala,Mahabaleshwar";
+    }
+    if(document.getElementById("tour").value=="Temple")
+    {
+        document.getElementById("information").value="Place Are: Shirdi, Trimbakeshwar";
+    }
+    if(document.getElementById("tour").value=="Heritage")
+    {
+        document.getElementById("information").value="Place Are: Ellora Caves,Ajanta Caves";
+    }
+  }
+
+}
+
+</script>
+
+</body>
+</html>
