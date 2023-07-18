@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 14, 2023 at 07:18 PM
+-- Generation Time: Jul 18, 2023 at 08:21 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -76,7 +76,7 @@ CREATE TABLE `django_session` (
 --
 
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
-('kxp2cfzd4sypqe3lx310svgb5tlycwi4', 'eyJ1c2VybmFtZSI6ImFrYXNoMTEiLCJhZG1pbl91c2VybmFtZSI6InNhbmtldEAzMyJ9:1qKLQw:Ekfv7zvDCJmXszkdGbh2linAauqvfdUoXNWV4pVcpv4', '2023-07-28 16:14:18.415269');
+('h6oz202flt7b88gedohcsfdxsgxr6hrv', 'eyJ1c2VybmFtZSI6ImFrYXNoMTEiLCJhZG1pbl91c2VybmFtZSI6InNhbmtldEAzMyJ9:1qKNct:Y2ZVM9_N7YaqOdglgV6VqFGWAG05cFrF99BWWXG2X8Y', '2023-07-28 18:34:47.661723');
 
 -- --------------------------------------------------------
 
@@ -118,6 +118,16 @@ CREATE TABLE `payment` (
   `paid_status` int(2) DEFAULT NULL,
   `paid_by` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `payment`
+--
+
+INSERT INTO `payment` (`id`, `paid_date`, `paid_amount`, `paid_status`, `paid_by`) VALUES
+(4, '2023-07-15', 30000, 0, 1),
+(6, '2023-07-15', 30000, 0, 1),
+(7, '2023-07-15', 30000, 0, 1),
+(8, '2023-07-15', 30000, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -171,7 +181,8 @@ CREATE TABLE `tour_registration` (
 --
 
 INSERT INTO `tour_registration` (`id`, `customer_id`, `customer_name`, `customer_email`, `customer_phone`, `customer_address`, `customer_gender`, `customer_country`, `customer_state`, `customer_passport`, `customer_selected_package`, `trip_startdate`, `trip_enddate`, `trip_amt`, `customer_payment`, `trip_status`) VALUES
-(1, 1, 'Akash', 'akash@gmail.com', '8308139963', 'Pune', 'Male', 'India', 'Maharashtra', 'jdagh2dabs', 103, '2023-07-14', '2023-07-23', 30000, 2000, 2);
+(1, 1, 'Akash', 'akash@gmail.com', '8308139963', 'Pune', 'Male', 'India', 'Maharashtra', 'jdagh2dabs', 103, '2023-07-14', '2023-07-23', 30000, 2000, 2),
+(9, 1, 'SURAJ GIRI', 'surajgiri974@gmail.com', '08308149964', 'Sr. No. 26 1 Laxmibai Nandgude colony near mahadev nivas vishal nagar pimple nilakh pune', 'Male', 'India', 'Maharashtra', 'msdgkadgka', 103, '2022-07-20', '2000-10-01', 30000, 0, 2);
 
 -- --------------------------------------------------------
 
@@ -265,9 +276,7 @@ ALTER TABLE `hotel_booking`
 -- Indexes for table `payment`
 --
 ALTER TABLE `payment`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `paid_by` (`paid_by`),
-  ADD KEY `paid_status` (`paid_status`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tourism_plan`
@@ -324,7 +333,7 @@ ALTER TABLE `hotel_booking`
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tourism_plan`
@@ -336,7 +345,7 @@ ALTER TABLE `tourism_plan`
 -- AUTO_INCREMENT for table `tour_registration`
 --
 ALTER TABLE `tour_registration`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `trs_employee`
@@ -370,7 +379,7 @@ ALTER TABLE `hotel_booking`
 -- Constraints for table `payment`
 --
 ALTER TABLE `payment`
-  ADD CONSTRAINT `payment_ibfk_1` FOREIGN KEY (`paid_status`) REFERENCES `customer_details` (`customer_id`);
+  ADD CONSTRAINT `payment_ibfk_1` FOREIGN KEY (`paid_by`) REFERENCES `customer_details` (`customer_id`);
 
 --
 -- Constraints for table `tour_registration`
