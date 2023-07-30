@@ -128,13 +128,25 @@
     
                                  
 
-                             <a class="nav-link" href="">
-                                <span class="nav-icon">
-                                    <i class="bi-file-earmark-text" style="font-size: 20px;"></i>
-                                 </span>
-    
-                                 <span class="nav-link-text">Report </span> 
-    
+                                 <a class="nav-link" href="{% url 'tour-master:tour-report' %}">
+                                    <span class="nav-icon">
+                                        <i class="bi-file-earmark-text" style="font-size: 20px;"></i>
+                                     </span>
+        
+                                     <span class="nav-link-text">Tour Report </span> 
+                                     <a class="nav-link" href="{% url 'tour-master:hotel-report' %}">
+                                        <span class="nav-icon">
+                                            <i class="bi-file-earmark-text" style="font-size: 20px;"></i>
+                                         </span>
+            
+                                         <span class="nav-link-text">Hotel Report </span> 
+                                         <a class="nav-link" href="{% url 'tour-master:vehicle-report' %}">
+                                            <span class="nav-icon">
+                                                <i class="bi-file-earmark-text" style="font-size: 20px;"></i>
+                                             </span>
+                
+                                             <span class="nav-link-text">Vehicle Report </span> 
+                            
     
     
 

@@ -59,6 +59,8 @@ class Payment(models.Model):
     paid_amount = models.FloatField(blank=True, null=True)
     paid_status = models.IntegerField()
     paid_by = models.IntegerField(blank=True, null=True)
+    tour_id = models.IntegerField()
+
 
     class Meta:
         managed = False

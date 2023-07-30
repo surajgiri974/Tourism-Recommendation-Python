@@ -146,18 +146,19 @@
 												<th class="cell">Customer Mobile</th>
 												<th class="cell">Selected Package</th>
 												<th class="cell">Amount</th>
-												<th class="cell"></th>
+												<th class="cell">Action</th>
 											</tr>
 										</thead>
 										<tbody>
 											{% for bk in completed %}
 											<tr>
-												<td class="cell">{{ forloop.counter }}</td>
+												<td class="cell">{{ bk.id }}</td>
 												<td class="cell">{{ bk.customer_name }}</td>
 												<td class="cell">{{ bk.customer_email }}</td>
 												<td class="cell">{{ bk.customer_phone }}</td>
 												<td class="cell"><span class="truncate">{{ bk.customer_selected_package }}</span></td>
 												<td class="cell">{{ bk.trip_amt }}</td>
+												<td class="cell"><a href="{% url 'tour-master:bill' bk.id %}"><button class="btn btn-success">View</button></a></td>
 											</tr>
 											{% endfor %}
 										</tbody>	

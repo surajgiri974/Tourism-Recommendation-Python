@@ -6,21 +6,45 @@ from django.contrib import messages
 
 # Create your views here.
 
+def tourreport(request):
+    query = 'SELECT * From tour_registration,tourism_plan where tour_registration.customer_selected_package = tourism_plan.plan_id;'
+    data = TourRegistration.objects.raw(query)
+    context ={
+        'tour_data' : data,
+    }
+    return render(request,'administrator/report.html',context)
+def hotelreport(request):
+    data = HotelBooking.objects.all()
+    context ={
+        'hotel_data' : data,
+    }
+    return render(request,'administrator/report.html',context)
+def vehiclereport(request):
+    data = VehicleRegistration.objects.all()
+    context ={
+        'vehicle_data' : data,
+    }
+    return render(request,'administrator/report.html',context)
+
+
 def login(request):
     return render(request,'administrator/login.html')
 
 def bill(request,cust_id):
-    payment = Payment.objects.get(paid_by = cust_id)
     tour = TourRegistration.objects.get(id = cust_id)
+    payment = Payment.objects.get(tour_id = cust_id)
     plan = TourismPlan.objects.get(plan_id = tour.customer_selected_package )
     context = {
         'invoice_number' : payment.id,
         'invoice_date'   : payment.paid_date,
         'customer_name'  : tour.customer_name,
+        'customer_address' : tour.customer_address,
+        'customer_phone'  : tour.customer_phone,
         'package_name'   : plan.plan_name,
         'trip_duration'  : plan.plan_duration,
         'total_amount'   : payment.paid_amount,
-        'description'    : plan.plan_details
+        'description'    : plan.plan_details,
+        'payment_status' : payment.paid_status
 
     }
     return render(request,'administrator/bill.html',context)
@@ -117,7 +141,8 @@ def approve_tour(request,pkg_id,custid,tour_id):
         paid_date = datetime.datetime.now(),
         paid_amount =  trip_amt.plan_amount,
         paid_status = 0,
-        paid_by = customer.customer_id      
+        paid_by = customer.customer_id,
+        tour_id = tour_id
     )
     appCust.save()
     return HttpResponseRedirect("/Tour-Master/booking")

@@ -20,5 +20,8 @@ urlpatterns =[
     path('deny-hotel/(<int:hotel_id>)',views.deny_hotel,name='deny-hotel'),
     path('approve-vehicle/(<int:vehicle_id>)',views.approve_vehicle,name='approve-vehicle'),
     path('deny-vehicle/(<int:vehicle_id>)',views.deny_vehicle,name='deny-vehicle'),
+    path('tour-report',views.tourreport,name='tour-report'),
+    path('vehicle-report',views.vehiclereport,name='vehicle-report'),
+    path('hotel-report',views.hotelreport,name='hotel-report'),
 
 ]

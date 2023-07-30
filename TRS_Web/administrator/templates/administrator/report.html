@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Report</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+  <h2>Report</h2>
+  <p>Tour Registration Report</p>            
+{% if tour_data %}
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Mobile Number</th>
+        <th>Email</th>
+        <th>Destination</th>
+        <th>Amount</th>
+        <th>Duration</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for i in tour_data %}
+      <tr>
+        <td>{{ i.customer_name }}</td>
+        <td>{{ i.customer_phone }}</td>
+        <td>{{ i.customer_email }}</td>
+        <td>{{ i.plan_name }}</td>
+        <td>{{ i.plan_amount }}</td>
+        <td>{{ i.plan_duration }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% endif %}
+
+{% if hotel_data %}
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Mobile Number</th>
+        <th>Email</th>
+        <th>Room Booked</th>
+        <th>Hotel Check-in</th>
+        <th>Hotel Check-out</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for i in hotel_data %}
+      <tr>
+        <td>{{ i.customer_name }}</td>
+        <td>{{ i.customer_number }}</td>
+        <td>{{ i.customer_email }}</td>
+        <td>{{ i.room_booked }}</td>
+        <td>{{ i.hotel_checkin }}</td>
+        <td>{{ i.hotel_checkout }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% endif %}
+
+{% if vehicle_data %}
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Mobile Number</th>
+        <th>Email</th>
+        <th>Vehicle Check-in</th>
+        <th>Vehicle Check-out</th>
+        <th>Vehicle Type</th>
+        <th>City</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for i in hotel_data %}
+      <tr>
+        <td>{{ i.customer_name }}</td>
+        <td>{{ i.customer_phone }}</td>
+        <td>{{ i.customer_email }}</td>
+        <td>{{ i.customer_pickup }}</td>
+        <td>{{ i.customer_drop }}</td>
+        <td>{{ i.vehicle_type }}</td>
+        <td>{{ i.city }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% endif %}
+
+</div>
+
+</body>
+</html>
