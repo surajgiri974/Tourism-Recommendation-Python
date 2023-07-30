@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 18, 2023 at 08:21 AM
+-- Generation Time: Jul 30, 2023 at 01:16 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `trs`
 --
+CREATE DATABASE IF NOT EXISTS `trs` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `trs`;
 
 -- --------------------------------------------------------
 
@@ -76,7 +78,10 @@ CREATE TABLE `django_session` (
 --
 
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
-('h6oz202flt7b88gedohcsfdxsgxr6hrv', 'eyJ1c2VybmFtZSI6ImFrYXNoMTEiLCJhZG1pbl91c2VybmFtZSI6InNhbmtldEAzMyJ9:1qKNct:Y2ZVM9_N7YaqOdglgV6VqFGWAG05cFrF99BWWXG2X8Y', '2023-07-28 18:34:47.661723');
+('elevlwz6sgd05ouyysa80zir3n9kpes2', 'eyJhZG1pbl91c2VybmFtZSI6InNhbmtldEAzMyJ9:1qQ2oQ:ZMJT4LR9DOsHonfx1HhP86hZ-2csicrC-o0dHNnnyvA', '2023-08-13 09:34:06.565218'),
+('h6oz202flt7b88gedohcsfdxsgxr6hrv', 'eyJ1c2VybmFtZSI6ImFrYXNoMTEiLCJhZG1pbl91c2VybmFtZSI6InNhbmtldEAzMyJ9:1qKNct:Y2ZVM9_N7YaqOdglgV6VqFGWAG05cFrF99BWWXG2X8Y', '2023-07-28 18:34:47.661723'),
+('pd1i8nnhqausajmnz24ytivp7gcqseso', 'eyJ1c2VybmFtZSI6ImFrYXNoMTEifQ:1qQ3eM:0Jmwp53Z5QBGJ0VLaxcqhyL7FZDPq2A3RRmsvqrstQg', '2023-08-13 10:27:46.963056'),
+('v5y6kikzugxkkemg8mhhxfmhad7z4x1m', 'eyJhZG1pbl91c2VybmFtZSI6InNhbmtldEAzMyJ9:1qQ3fp:mUzP66OpskUT0TEAsan-CwZaTFtLEXq5vM9JL1jaPbQ', '2023-08-13 10:29:17.718894');
 
 -- --------------------------------------------------------
 
@@ -115,19 +120,18 @@ CREATE TABLE `payment` (
   `id` int(11) NOT NULL,
   `paid_date` date DEFAULT NULL,
   `paid_amount` float DEFAULT NULL,
-  `paid_status` int(2) DEFAULT NULL,
-  `paid_by` int(11) DEFAULT NULL
+  `paid_status` int(2) DEFAULT NULL COMMENT '0 = Paid,\r\n1 = Unpaid',
+  `paid_by` int(11) DEFAULT NULL,
+  `tour_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `payment`
 --
 
-INSERT INTO `payment` (`id`, `paid_date`, `paid_amount`, `paid_status`, `paid_by`) VALUES
-(4, '2023-07-15', 30000, 0, 1),
-(6, '2023-07-15', 30000, 0, 1),
-(7, '2023-07-15', 30000, 0, 1),
-(8, '2023-07-15', 30000, 0, 1);
+INSERT INTO `payment` (`id`, `paid_date`, `paid_amount`, `paid_status`, `paid_by`, `tour_id`) VALUES
+(6, '2023-07-15', 30000, 0, 1, 1),
+(12, '2023-07-30', 30000, 0, 1, 9);
 
 -- --------------------------------------------------------
 
@@ -148,7 +152,7 @@ CREATE TABLE `tourism_plan` (
 --
 
 INSERT INTO `tourism_plan` (`plan_id`, `plan_name`, `plan_details`, `plan_duration`, `plan_amount`) VALUES
-(103, 'Kedarnath', 'Nice Temple', '7', 30000),
+(103, 'Kedarnath', ', Kedarnath is one of the four major sites in India\'s Chota Char Dham pilgrimage that also includes Badrinath, Gangotri and Yamunotri. It is the most remote of the four Char Dham sites and is flanked ', '7', 30000),
 (104, 'Kashmir', 'Mountains', '7', 60000);
 
 -- --------------------------------------------------------
@@ -276,7 +280,9 @@ ALTER TABLE `hotel_booking`
 -- Indexes for table `payment`
 --
 ALTER TABLE `payment`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `payment_ibfk_1` (`paid_by`),
+  ADD KEY `tour_id` (`tour_id`);
 
 --
 -- Indexes for table `tourism_plan`
@@ -333,7 +339,7 @@ ALTER TABLE `hotel_booking`
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tourism_plan`
