@@ -356,7 +356,13 @@ p {
 					<td>{{ i.vehicle_type }}</td>
 					<td>{{ i.city }}</td>
 					<td>{{ i.amount }}</td>
-					<td><label class="badge badge-danger">Not Available</label></td>
+					<td>
+            {% if i.vehicle_status == 0  %}
+             <label class="badge badge-success">Available</label>
+            {% elif i.vehicle_status == 1 %}
+            <label class="badge badge-danger">Not Available</label>
+            {% endif %}
+          </td>
 				  </tr>
 				  {% empty %}
 				  <h5>No Vehicle was Booked Before</h5>

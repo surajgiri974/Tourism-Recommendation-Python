@@ -171,6 +171,7 @@ def vehicle_registration(request):
         cursor = connection.cursor()
         cursor.execute(q, v)
         messages.success(request, 'Confirmation Will be sent Soon')
+        send_mail('Thank You for Contacting Us !', 'We Will Reach out to you Soon!!', 'pavanshinde678@gmail.com', (cemail,), fail_silently=False) 
         return render(request, 'Tourism/thanks.html')
 
     except:
@@ -230,5 +231,6 @@ def hotel_booked(request):
     )
     hotel.save()
     messages.success(request, 'Thank You For Hotel Booking We Will Reach Out to You Soon!!')
+    send_mail('Thank You for Contacting Us !', 'We Will Reach out to you Soon!!', 'pavanshinde678@gmail.com', (cemail,), fail_silently=False) 
     time.sleep(3)
-    return HttpResponseRedirect('/home')
+    return render(request,"Tourism/thanks.html")

@@ -152,7 +152,7 @@ body
 			<td><select id="data_21" name="data_21" style="max-width : 450px;" onchange="check();" onclick="check();" class="form-control" required>
 				<option value="">Tour Plan with Trip Cost</option>
 				{% for i in plan %}
-				<option value="{{ i.plan_id }}">{{ i.plan_name }} - {{ i.plan_details }}</option>
+				<option value="{{ i.plan_id }}">{{ i.plan_name }} - {{ i.plan_details }} {{ i.plan_amount}}</option>
 				{% endfor %}
 		
 				</select>
