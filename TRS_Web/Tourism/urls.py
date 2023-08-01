@@ -14,6 +14,7 @@ urlpatterns = [
     path('vehicle_register', views.vehicle_registration, name='vehicle_register'),
     path('customer_contact', views.customer_contact, name='customer_contact'),
     path('hotel_book',views.hotel_booked,name='hotel_book'),
+    path('hotel',views.hotel_book,name='hotel'),
     path('recommend',views.recommed,name="recommend"),
     path('orders',views.customer_orders,name='orders'),
     path('update-tour/(<int:plan_id>)',views.updateTour,name='update-tour'),

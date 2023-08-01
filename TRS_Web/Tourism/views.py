@@ -230,4 +230,5 @@ def hotel_booked(request):
     )
     hotel.save()
     messages.success(request, 'Thank You For Hotel Booking We Will Reach Out to You Soon!!')
-    return render(request, 'Tourism/index.html')
+    time.sleep(3)
+    return HttpResponseRedirect('/home')

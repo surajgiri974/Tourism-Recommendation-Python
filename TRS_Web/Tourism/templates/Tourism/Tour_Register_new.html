@@ -66,17 +66,17 @@ body
 		<tr>
 			
 			<td><b>First name :<span style="color: red;"> *</span></td>
-			<td><input type="text" id="data_3" name="data_3" style="max-width: 100%;" class="form-control" /></td>
+			<td><input type="text" id="data_3" name="data_3" style="max-width: 100%;" class="form-control" required/></td>
 			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 			<td><b>Last name :<span style="color: red;"> *</span></td></b>
-			<td> <input type="text" id="data_4" name="data_4" style="max-width: 100%;" class="form-control"/></td>
+			<td> <input type="text" id="data_4" name="data_4" style="max-width: 100%;" class="form-control" required/></td>
 		</tr>
 		<tr>
 			<td><b>Email :<span style="color: red;"> *</span></td></b>
-			<td> <input type="email" id="data_5" name="data_5" style="max-width : 450px;" class="form-control"></td>
+			<td> <input type="email" id="data_5" name="data_5" style="max-width : 450px;" class="form-control" required></td>
 			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 			<td><b>Phone :<span style="color: red;"> *</span></td></b>
-			<td> <input type="number" pattern="[789]/d{9}" id="data_6" name="data_6" style="max-width : 450px;" class="form-control"></td>
+			<td> <input type="text" pattern="[789]/d{9}" id="data_6" name="data_6" maxlength="10" style="max-width : 450px;" class="form-control" required></td>
 		</tr>
 		<tr>
 			<td><b>Gender :<span style="color: red;"> *</span></td></b>
@@ -88,8 +88,8 @@ body
 			</td>
 			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 			<td><b>Country :<span style="color: red;"> *</span></td></b>
-			<td><select id="data_15" name="data_15" style="max-width : 450px;" class="form-control">
-					<option>Select Country</option>
+			<td><select id="data_15" name="data_15" style="max-width : 450px;" class="form-control" required>
+					<option value="">Select Country</option>
 					<option>India</option>
 			</td>
 		</tr>
@@ -167,7 +167,7 @@ body
 		</tr>
 		<tr>
 			<td><b>Passport Number :<span style="color: red;"> *</span></td></b>
-			<td> <input type="text" id="data_19" name="data_19" style="max-width : 450px;" class="form-control" required/>
+			<td> <input type="text" pattern="[A-Z]{1}[0-9]{7}" id="data_19" name="data_19" style="max-width : 450px;" class="form-control" required/>
 			</td>
 			
 		</tr>
